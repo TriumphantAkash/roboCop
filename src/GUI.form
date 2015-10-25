@@ -99,17 +99,17 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jSlider12" min="-2" pref="151" max="-2" attributes="0"/>
+                          <Component id="cameraSlider" min="-2" pref="151" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jSlider10" min="-2" pref="151" max="-2" attributes="0"/>
+                          <Component id="drawerStateSlider" min="-2" pref="151" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jSlider2" min="-2" pref="151" max="-2" attributes="0"/>
+                          <Component id="tempSlider" min="-2" pref="151" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -122,17 +122,17 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel18" max="32767" attributes="0"/>
-                      <Component id="jSlider10" pref="0" max="32767" attributes="0"/>
+                      <Component id="drawerStateSlider" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jSlider2" min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="tempSlider" min="-2" pref="14" max="-2" attributes="0"/>
                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSlider12" min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="cameraSlider" min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -151,7 +151,7 @@
             <Property name="text" type="java.lang.String" value="Drawer State"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSlider" name="jSlider10">
+        <Component class="javax.swing.JSlider" name="drawerStateSlider">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
@@ -164,7 +164,7 @@
             <Property name="text" type="java.lang.String" value="Temperature Sensor"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSlider" name="jSlider2">
+        <Component class="javax.swing.JSlider" name="tempSlider">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -177,7 +177,7 @@
             <Property name="text" type="java.lang.String" value="Camera State"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSlider" name="jSlider12">
+        <Component class="javax.swing.JSlider" name="cameraSlider">
         </Component>
       </SubComponents>
     </Container>
@@ -200,12 +200,12 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jSlider13" min="-2" pref="151" max="-2" attributes="0"/>
+                          <Component id="roboArmPositionSlider" min="-2" pref="151" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jSlider14" min="-2" pref="151" max="-2" attributes="0"/>
+                          <Component id="roboClawPositionSlider" min="-2" pref="151" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -217,12 +217,12 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jSlider13" pref="0" max="32767" attributes="0"/>
+                      <Component id="roboArmPositionSlider" pref="0" max="32767" attributes="0"/>
                       <Component id="jLabel19" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jSlider14" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="roboClawPositionSlider" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
                       <Component id="jLabel20" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -242,7 +242,7 @@
             <Property name="text" type="java.lang.String" value="Arm Position"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSlider" name="jSlider13">
+        <Component class="javax.swing.JSlider" name="roboArmPositionSlider">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel20">
           <Properties>
@@ -255,7 +255,7 @@
             <Property name="text" type="java.lang.String" value="Claw Position"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSlider" name="jSlider14">
+        <Component class="javax.swing.JSlider" name="roboClawPositionSlider">
         </Component>
       </SubComponents>
     </Container>
@@ -278,17 +278,17 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jSlider16" min="-2" pref="151" max="-2" attributes="0"/>
+                          <Component id="roboDirectionSlider" min="-2" pref="151" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jSlider15" min="-2" pref="151" max="-2" attributes="0"/>
+                          <Component id="roboStateSlider" min="-2" pref="151" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jSlider3" min="-2" pref="151" max="-2" attributes="0"/>
+                          <Component id="roboSpeedSlider" min="-2" pref="151" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -301,17 +301,17 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel22" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jSlider15" alignment="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="roboStateSlider" alignment="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jSlider3" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="roboSpeedSlider" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
                       <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSlider16" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="roboDirectionSlider" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -330,7 +330,7 @@
             <Property name="text" type="java.lang.String" value="State"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSlider" name="jSlider15">
+        <Component class="javax.swing.JSlider" name="roboStateSlider">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel14">
           <Properties>
@@ -343,7 +343,7 @@
             <Property name="text" type="java.lang.String" value="Speed"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSlider" name="jSlider3">
+        <Component class="javax.swing.JSlider" name="roboSpeedSlider">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
@@ -356,7 +356,7 @@
             <Property name="text" type="java.lang.String" value="Direction"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSlider" name="jSlider16">
+        <Component class="javax.swing.JSlider" name="roboDirectionSlider">
         </Component>
       </SubComponents>
     </Container>

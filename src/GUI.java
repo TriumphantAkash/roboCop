@@ -29,25 +29,25 @@ public class GUI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jDesktopPane2 = new javax.swing.JDesktopPane();
         jLabel18 = new javax.swing.JLabel();
-        jSlider10 = new javax.swing.JSlider();
+        drawerStateSlider = new javax.swing.JSlider();
         jLabel9 = new javax.swing.JLabel();
-        jSlider2 = new javax.swing.JSlider();
+        tempSlider = new javax.swing.JSlider();
         jLabel3 = new javax.swing.JLabel();
-        jSlider12 = new javax.swing.JSlider();
+        cameraSlider = new javax.swing.JSlider();
         jLabel7 = new javax.swing.JLabel();
         jDesktopPane3 = new javax.swing.JDesktopPane();
         jLabel19 = new javax.swing.JLabel();
-        jSlider13 = new javax.swing.JSlider();
+        roboArmPositionSlider = new javax.swing.JSlider();
         jLabel20 = new javax.swing.JLabel();
-        jSlider14 = new javax.swing.JSlider();
+        roboClawPositionSlider = new javax.swing.JSlider();
         jLabel21 = new javax.swing.JLabel();
         jDesktopPane4 = new javax.swing.JDesktopPane();
         jLabel22 = new javax.swing.JLabel();
-        jSlider15 = new javax.swing.JSlider();
+        roboStateSlider = new javax.swing.JSlider();
         jLabel14 = new javax.swing.JLabel();
-        jSlider3 = new javax.swing.JSlider();
+        roboSpeedSlider = new javax.swing.JSlider();
         jLabel4 = new javax.swing.JLabel();
-        jSlider16 = new javax.swing.JSlider();
+        roboDirectionSlider = new javax.swing.JSlider();
         jLabel23 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -77,11 +77,11 @@ public class GUI extends javax.swing.JFrame {
         jLabel3.setText("Camera State");
 
         jDesktopPane2.setLayer(jLabel18, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jSlider10, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(drawerStateSlider, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jSlider2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(tempSlider, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jSlider12, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(cameraSlider, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
@@ -93,15 +93,15 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSlider12, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cameraSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSlider10, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(drawerStateSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tempSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(19, 19, 19))
         );
         jDesktopPane2Layout.setVerticalGroup(
@@ -110,15 +110,15 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSlider10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(drawerStateSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tempSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jSlider12, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cameraSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -134,9 +134,9 @@ public class GUI extends javax.swing.JFrame {
         jLabel20.setText("Claw Position");
 
         jDesktopPane3.setLayer(jLabel19, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane3.setLayer(jSlider13, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane3.setLayer(roboArmPositionSlider, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane3.setLayer(jLabel20, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane3.setLayer(jSlider14, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane3.setLayer(roboClawPositionSlider, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane3Layout = new javax.swing.GroupLayout(jDesktopPane3);
         jDesktopPane3.setLayout(jDesktopPane3Layout);
@@ -148,11 +148,11 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(jDesktopPane3Layout.createSequentialGroup()
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSlider13, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(roboArmPositionSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane3Layout.createSequentialGroup()
                         .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSlider14, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(roboClawPositionSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(19, 19, 19))
         );
         jDesktopPane3Layout.setVerticalGroup(
@@ -160,11 +160,11 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(jDesktopPane3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jSlider13, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(roboArmPositionSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSlider14, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(roboClawPositionSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -185,11 +185,11 @@ public class GUI extends javax.swing.JFrame {
         jLabel4.setText("Direction");
 
         jDesktopPane4.setLayer(jLabel22, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane4.setLayer(jSlider15, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane4.setLayer(roboStateSlider, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane4.setLayer(jLabel14, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane4.setLayer(jSlider3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane4.setLayer(roboSpeedSlider, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane4.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane4.setLayer(jSlider16, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane4.setLayer(roboDirectionSlider, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane4Layout = new javax.swing.GroupLayout(jDesktopPane4);
         jDesktopPane4.setLayout(jDesktopPane4Layout);
@@ -201,15 +201,15 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(jDesktopPane4Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSlider16, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(roboDirectionSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane4Layout.createSequentialGroup()
                         .addComponent(jLabel22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSlider15, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(roboStateSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane4Layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSlider3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(roboSpeedSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(19, 19, 19))
         );
         jDesktopPane4Layout.setVerticalGroup(
@@ -218,15 +218,15 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jDesktopPane4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSlider15, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(roboStateSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jDesktopPane4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSlider3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(roboSpeedSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jDesktopPane4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jSlider16, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(roboDirectionSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -322,6 +322,8 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSlider cameraSlider;
+    private javax.swing.JSlider drawerStateSlider;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JDesktopPane jDesktopPane3;
     private javax.swing.JDesktopPane jDesktopPane4;
@@ -338,13 +340,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSlider jSlider10;
-    private javax.swing.JSlider jSlider12;
-    private javax.swing.JSlider jSlider13;
-    private javax.swing.JSlider jSlider14;
-    private javax.swing.JSlider jSlider15;
-    private javax.swing.JSlider jSlider16;
-    private javax.swing.JSlider jSlider2;
-    private javax.swing.JSlider jSlider3;
+    private javax.swing.JSlider roboArmPositionSlider;
+    private javax.swing.JSlider roboClawPositionSlider;
+    private javax.swing.JSlider roboDirectionSlider;
+    private javax.swing.JSlider roboSpeedSlider;
+    private javax.swing.JSlider roboStateSlider;
+    private javax.swing.JSlider tempSlider;
     // End of variables declaration//GEN-END:variables
 }
