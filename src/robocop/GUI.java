@@ -1,3 +1,5 @@
+package robocop;
+
 
 import java.awt.Color;
 import java.awt.Font;
@@ -20,6 +22,7 @@ import javax.swing.JSlider;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import robocop.robostateenum.RunningStateEnum;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -32,12 +35,13 @@ import javax.swing.event.ChangeListener;
  * @author Akash
  */
 public class GUI extends javax.swing.JFrame {
-
     /**
      * Creates new form GUI
      */
     public GUI() {
+        //appModel = new AppModel();
         initComponents();
+        
     }
 
     /**
@@ -73,6 +77,10 @@ public class GUI extends javax.swing.JFrame {
         cameraButton = new javax.swing.JToggleButton();
         temperatureLabel = new javax.swing.JLabel();
         frame = new javax.swing.JInternalFrame("Camera Capture");
+        robotStatePanel = new javax.swing.JPanel();
+        robotMovementStatus = new javax.swing.JLabel();
+        robotClawStatus = new javax.swing.JLabel();
+        robotArmStatus = new javax.swing.JLabel();
 
         speedButtonGroup.add(slowSpeedRadioButton);
         speedButtonGroup.add(mediumSpeedRadioButton);
@@ -91,13 +99,15 @@ public class GUI extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 51));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setBackground(Color.WHITE);
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ROBOCOP");
         jLabel1.setBorder(new javax.swing.border.MatteBorder(null));
+        jLabel1.setOpaque(true);
 
-        robotMovementPanel.setBorder(BorderFactory.createTitledBorder(null, "Robot Movement", TitledBorder.CENTER, TitledBorder.TOP, new Font("lucida console",Font.BOLD,16), Color.black));
+        robotMovementPanel.setBorder(BorderFactory.createTitledBorder(null, "Robot Movement Control", TitledBorder.CENTER, TitledBorder.TOP, new Font("lucida console",Font.BOLD,16), Color.black));
+        robotMovementPanel.setBackground(Color.WHITE);
 
         stateLabel.setFont(new java.awt.Font("Lucida Console", 1, 12)); // NOI18N
         stateLabel.setText("State");
@@ -109,10 +119,31 @@ public class GUI extends javax.swing.JFrame {
         directionLabel.setText("Direction");
 
         slowSpeedRadioButton.setText("slow");
+        slowSpeedRadioButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                movementStateButton.setSelected(true);
+                robotMovementStatus.setText("Robot is moving slow");
+                // Do something here...
+            }
+        });
 
         mediumSpeedRadioButton.setText("medium");
+        mediumSpeedRadioButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                movementStateButton.setSelected(true);
+                robotMovementStatus.setText("Robot is running at medium speed");
+                // Do something here...
+            }
+        });
 
         fastSpeedRadioButton.setText("fast");
+        fastSpeedRadioButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                movementStateButton.setSelected(true);
+                robotMovementStatus.setText("Robot is running at fast speed");
+                // Do something here...
+            }
+        });
 
         movementStateButton.setText("RUN");
         movementStateButton.addChangeListener(new ChangeListener() {
@@ -120,8 +151,15 @@ public class GUI extends javax.swing.JFrame {
             public void stateChanged(ChangeEvent event) {
                 if (movementStateButton.isSelected()){
                     movementStateButton.setText("STOP");
+                    robotMovementStatus.setText("Robot is running");
+                    //appModel.setRunningState(RunningStateEnum.RunningState.RUNNING);
                 } else {
                     movementStateButton.setText("RUN");
+                    robotMovementStatus.setText("Robot is stopped");
+                    mediumSpeedRadioButton.setSelected(false);
+                    fastSpeedRadioButton.setSelected(false);
+                    slowSpeedRadioButton.setSelected(false);
+                    //appModel.setRunningState(RunningStateEnum.RunningState.STOPPED);
                 }
             }
         });
@@ -129,11 +167,11 @@ public class GUI extends javax.swing.JFrame {
         directionSlider.setPaintLabels(true);
 
         Hashtable<Integer, JLabel> table = new Hashtable<Integer, JLabel>();
-        table.put (0, new JLabel("backward"));
-        table.put (22, new JLabel("Left"));
-        table.put (45, new JLabel("Forward"));
-        table.put (67, new JLabel("right"));
-        table.put (90, new JLabel("backward"));
+        table.put (0, new JLabel("South"));
+        table.put (22, new JLabel("East"));
+        table.put (45, new JLabel("North"));
+        table.put (67, new JLabel("West"));
+        table.put (90, new JLabel("South"));
         directionSlider.setLabelTable (table);
 
         javax.swing.GroupLayout robotMovementPanelLayout = new javax.swing.GroupLayout(robotMovementPanel);
@@ -185,7 +223,8 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        clawPositionLabel.setBorder(BorderFactory.createTitledBorder(null, "Robot Arm", TitledBorder.CENTER, TitledBorder.TOP, new Font("lucida console",Font.BOLD,16), Color.black));
+        clawPositionLabel.setBorder(BorderFactory.createTitledBorder(null, "Robot Arm Control", TitledBorder.CENTER, TitledBorder.TOP, new Font("lucida console",Font.BOLD,16), Color.black));
+        clawPositionLabel.setBackground(Color.WHITE);
 
         armPositionLabel.setFont(new java.awt.Font("Lucida Console", 1, 12)); // NOI18N
         armPositionLabel.setText("Arm Position");
@@ -194,13 +233,15 @@ public class GUI extends javax.swing.JFrame {
         jLabel6.setText("ClawPosition");
 
         clawButton.setText("CLOSE");
-        clawButton.addChangeListener(new ChangeListener() {
+        clawButton.addActionListener(new ActionListener() {
             @Override
-            public void stateChanged(ChangeEvent event) {
+            public void actionPerformed(ActionEvent event) {
                 if (clawButton.isSelected()){
                     clawButton.setText("OPEN");
+                    robotClawStatus.setText("Robot claw is closed");
                 } else {
                     clawButton.setText("CLOSE");
+                    robotClawStatus.setText("Robot claw is Open");
                 }
             }
         });
@@ -239,7 +280,8 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        externalFeaturesPanel.setBorder(BorderFactory.createTitledBorder(null, "External Features", TitledBorder.CENTER, TitledBorder.TOP, new Font("lucida console",Font.BOLD,16), Color.black));
+        externalFeaturesPanel.setBorder(BorderFactory.createTitledBorder(null, "Sensors and Camera Control", TitledBorder.CENTER, TitledBorder.TOP, new Font("lucida console",Font.BOLD,16), Color.black));
+        externalFeaturesPanel.setBackground(Color.WHITE);
 
         tempratureSensorLabel.setFont(new java.awt.Font("Lucida Console", 1, 12)); // NOI18N
         tempratureSensorLabel.setText("Temprature Sensor");
@@ -315,7 +357,42 @@ public class GUI extends javax.swing.JFrame {
         );
         frameLayout.setVerticalGroup(
             frameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 234, Short.MAX_VALUE)
+            .addGap(0, 410, Short.MAX_VALUE)
+        );
+
+        robotStatePanel.setBorder(BorderFactory.createTitledBorder(null, "Robot Response", TitledBorder.CENTER, TitledBorder.TOP, new Font("lucida console",Font.BOLD,16), Color.black));
+
+        robotMovementStatus.setForeground(Color.MAGENTA);
+
+        robotClawStatus.setForeground(Color.MAGENTA);
+
+        robotArmStatus.setForeground(Color.MAGENTA);
+
+        javax.swing.GroupLayout robotStatePanelLayout = new javax.swing.GroupLayout(robotStatePanel);
+        robotStatePanel.setLayout(robotStatePanelLayout);
+        robotStatePanelLayout.setHorizontalGroup(
+            robotStatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(robotStatePanelLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(robotArmStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(robotStatePanelLayout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addGroup(robotStatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(robotClawStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(robotMovementStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+        robotStatePanelLayout.setVerticalGroup(
+            robotStatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(robotStatePanelLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(robotMovementStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(robotClawStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(robotArmStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -334,11 +411,12 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(temperatureLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(frame))
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(robotStatePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(frame, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(temperatureLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -346,20 +424,22 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(robotMovementPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(196, 196, 196)
-                        .addComponent(temperatureLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(frame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
+                        .addGap(50, 50, 50)
+                        .addComponent(robotMovementPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
                         .addComponent(clawPositionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
+                        .addGap(62, 62, 62)
                         .addComponent(externalFeaturesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(robotStatePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61)
+                        .addComponent(temperatureLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(frame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -484,7 +564,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton mediumSpeedRadioButton;
     private javax.swing.JToggleButton movementStateButton;
+    private javax.swing.JLabel robotArmStatus;
+    private javax.swing.JLabel robotClawStatus;
     private javax.swing.JPanel robotMovementPanel;
+    private javax.swing.JLabel robotMovementStatus;
+    private javax.swing.JPanel robotStatePanel;
     private javax.swing.JRadioButton slowSpeedRadioButton;
     private javax.swing.ButtonGroup speedButtonGroup;
     private javax.swing.JLabel speedLabel;
