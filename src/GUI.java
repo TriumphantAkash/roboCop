@@ -311,11 +311,11 @@ public class GUI extends javax.swing.JFrame {
         frame.getContentPane().setLayout(frameLayout);
         frameLayout.setHorizontalGroup(
             frameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 286, Short.MAX_VALUE)
         );
         frameLayout.setVerticalGroup(
             frameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 222, Short.MAX_VALUE)
+            .addGap(0, 234, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -334,12 +334,10 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(46, 46, 46)
+                .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(frame))
-                    .addComponent(temperatureLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(temperatureLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(frame))
                 .addContainerGap(96, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -351,9 +349,9 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(robotMovementPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(182, 182, 182)
+                        .addGap(196, 196, 196)
                         .addComponent(temperatureLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
+                        .addGap(18, 18, 18)
                         .addComponent(frame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(91, 91, 91)
@@ -429,7 +427,32 @@ public class GUI extends javax.swing.JFrame {
     
     public void removeImage()
     {
-        frame.setVisible(false);
+        //frame.setVisible(false);
+        //frame.setBackground(Color.LIGHT_GRAY);
+//        frame = new javax.swing.JInternalFrame("Camera Capture");
+//
+//        frame.setVisible(true);
+        
+        try 
+        {
+            BufferedImage img = ImageIO.read(new File("dp1.png"));
+            System.out.println("came in loadImage() function");
+           // JLabel imgLabel = new JLabel(new ImageIcon(bi));
+            frame.setContentPane(new JLabel(new ImageIcon(img)));
+            // Supply a layout manager for the body of the content
+                   // frame.setLayout(new GridBagLayout());
+//                    GridBagConstraints gbc = new GridBagConstraints();
+//                    gbc.gridwidth = GridBagConstraints.REMAINDER;
+                    
+                    //frame.pack();
+                   // frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
+//            imagePanel.add(imgLabel);
+//            imagePanel.revalidate();
+//            imagePanel.repaint();
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
         
     }
     
