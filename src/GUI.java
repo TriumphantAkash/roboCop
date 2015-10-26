@@ -1,7 +1,9 @@
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.Hashtable;
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JSlider;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
@@ -110,6 +112,16 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        directionSlider.setPaintLabels(true);
+
+        Hashtable<Integer, JLabel> table = new Hashtable<Integer, JLabel>();
+        table.put (0, new JLabel("backward"));
+        table.put (22, new JLabel("Left"));
+        table.put (45, new JLabel("Forward"));
+        table.put (67, new JLabel("right"));
+        table.put (90, new JLabel("backward"));
+        directionSlider.setLabelTable (table);
+
         javax.swing.GroupLayout robotMovementPanelLayout = new javax.swing.GroupLayout(robotMovementPanel);
         robotMovementPanel.setLayout(robotMovementPanelLayout);
         robotMovementPanelLayout.setHorizontalGroup(
@@ -118,8 +130,8 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(robotMovementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(robotMovementPanelLayout.createSequentialGroup()
                         .addComponent(directionLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(directionSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addComponent(directionSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(robotMovementPanelLayout.createSequentialGroup()
                         .addComponent(speedLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -153,9 +165,9 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(mediumSpeedRadioButton)
                             .addComponent(slowSpeedRadioButton))
                         .addGap(18, 18, 18)))
-                .addGroup(robotMovementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(directionLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(directionSlider, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(robotMovementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(directionSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(directionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -190,7 +202,7 @@ public class GUI extends javax.swing.JFrame {
             clawPositionLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(clawPositionLabelLayout.createSequentialGroup()
                 .addComponent(armPositionLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(armPositionSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(clawPositionLabelLayout.createSequentialGroup()
@@ -288,10 +300,10 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(clawPositionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(robotMovementPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(clawPositionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(externalFeaturesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(402, Short.MAX_VALUE))
+                .addContainerGap(454, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

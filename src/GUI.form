@@ -41,13 +41,13 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="clawPositionLabel" max="32767" attributes="0"/>
-                          <Component id="robotMovementPanel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="robotMovementPanel" max="32767" attributes="0"/>
+                          <Component id="clawPositionLabel" alignment="0" max="32767" attributes="0"/>
                           <Component id="externalFeaturesPanel" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="402" max="32767" attributes="0"/>
+              <EmptySpace pref="454" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -115,8 +115,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="directionLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="directionSlider" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="50" max="32767" attributes="0"/>
+                          <Component id="directionSlider" min="-2" pref="283" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="speedLabel" min="-2" max="-2" attributes="0"/>
@@ -161,9 +161,9 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="directionLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="directionSlider" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="directionSlider" max="32767" attributes="0"/>
+                      <Component id="directionLabel" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -222,6 +222,10 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JSlider" name="directionSlider">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSlider()"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="directionSlider.setPaintLabels(true);&#xa;    &#xa;    Hashtable&lt;Integer, JLabel&gt; table = new Hashtable&lt;Integer, JLabel&gt;();&#xa;    table.put (0, new JLabel(&quot;backward&quot;));&#xa;    table.put (22, new JLabel(&quot;Left&quot;));&#xa;    table.put (45, new JLabel(&quot;Forward&quot;));&#xa;    table.put (67, new JLabel(&quot;right&quot;));&#xa;    table.put (90, new JLabel(&quot;backward&quot;));&#xa;    directionSlider.setLabelTable (table);"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
@@ -236,7 +240,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Component id="armPositionLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="86" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="armPositionSlider" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
