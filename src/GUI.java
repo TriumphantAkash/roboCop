@@ -1,8 +1,20 @@
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Hashtable;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JSlider;
 import javax.swing.border.TitledBorder;
@@ -59,6 +71,8 @@ public class GUI extends javax.swing.JFrame {
         cameraStatusLabel = new javax.swing.JLabel();
         tempratureButton = new javax.swing.JToggleButton();
         cameraButton = new javax.swing.JToggleButton();
+        temperatureLabel = new javax.swing.JLabel();
+        frame = new javax.swing.JInternalFrame("Camera Capture");
 
         speedButtonGroup.add(slowSpeedRadioButton);
         speedButtonGroup.add(mediumSpeedRadioButton);
@@ -218,11 +232,11 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(clawPositionLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(armPositionSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(armPositionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(clawPositionLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(clawButton))
-                .addGap(25, 25, 25))
+                .addContainerGap())
         );
 
         externalFeaturesPanel.setBorder(BorderFactory.createTitledBorder(null, "External Features", TitledBorder.CENTER, TitledBorder.TOP, new Font("lucida console",Font.BOLD,16), Color.black));
@@ -234,25 +248,31 @@ public class GUI extends javax.swing.JFrame {
         cameraStatusLabel.setText("Camera Status");
 
         tempratureButton.setText("TURN ON");
-        tempratureButton.addChangeListener(new ChangeListener() {
+        tempratureButton.addActionListener(new ActionListener() {
             @Override
-            public void stateChanged(ChangeEvent event) {
+            public void actionPerformed(ActionEvent event) {
                 if (tempratureButton.isSelected()){
                     tempratureButton.setText("TURN OFF");
+                    int t = showTemp();
+                    temperatureLabel.setText("The temperature reported by robot is: "+t);
                 } else {
                     tempratureButton.setText("TURN ON");
+                    temperatureLabel.setText("The temperature sensor is off");
                 }
             }
         });
 
         cameraButton.setText("TURN ON");
-        cameraButton.addChangeListener(new ChangeListener() {
+        cameraButton.addActionListener(new ActionListener() {
             @Override
-            public void stateChanged(ChangeEvent event) {
+            public void actionPerformed(ActionEvent event) {
                 if (cameraButton.isSelected()){
                     cameraButton.setText("TURN OFF");
-                } else {
+                    loadImage();
+                }
+                else {
                     cameraButton.setText("TURN ON");
+                    removeImage();
                 }
             }
         });
@@ -275,16 +295,27 @@ public class GUI extends javax.swing.JFrame {
             externalFeaturesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(externalFeaturesPanelLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(externalFeaturesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(externalFeaturesPanelLayout.createSequentialGroup()
-                        .addComponent(tempratureSensorLabel)
-                        .addGap(0, 11, Short.MAX_VALUE))
-                    .addComponent(tempratureButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addGroup(externalFeaturesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tempratureSensorLabel)
+                    .addComponent(tempratureButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 60, Short.MAX_VALUE)
                 .addGroup(externalFeaturesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cameraStatusLabel)
                     .addComponent(cameraButton))
                 .addGap(18, 18, 18))
+        );
+
+        frame.setVisible(true);
+
+        javax.swing.GroupLayout frameLayout = new javax.swing.GroupLayout(frame.getContentPane());
+        frame.getContentPane().setLayout(frameLayout);
+        frameLayout.setHorizontalGroup(
+            frameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        frameLayout.setVerticalGroup(
+            frameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 222, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -295,15 +326,21 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(robotMovementPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(clawPositionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(externalFeaturesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(454, Short.MAX_VALUE))
+                            .addComponent(externalFeaturesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(frame))
+                    .addComponent(temperatureLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,12 +349,19 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(robotMovementPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(clawPositionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(externalFeaturesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(182, 182, 182)
+                        .addComponent(temperatureLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(frame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(clawPositionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(externalFeaturesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -358,6 +402,47 @@ public class GUI extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void loadImage()
+    {
+        try 
+        {
+            BufferedImage img = ImageIO.read(new File("dp.png"));
+            System.out.println("came in loadImage() function");
+           // JLabel imgLabel = new JLabel(new ImageIcon(bi));
+            frame.setContentPane(new JLabel(new ImageIcon(img)));
+            // Supply a layout manager for the body of the content
+                   // frame.setLayout(new GridBagLayout());
+//                    GridBagConstraints gbc = new GridBagConstraints();
+//                    gbc.gridwidth = GridBagConstraints.REMAINDER;
+                    
+                    //frame.pack();
+                   // frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
+//            imagePanel.add(imgLabel);
+//            imagePanel.revalidate();
+//            imagePanel.repaint();
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+    
+    public void removeImage()
+    {
+        frame.setVisible(false);
+        
+    }
+    
+    public int showTemp()
+    {
+        //generate a random number between 
+        Random r = new Random();
+        //the low and high values are set based on Dallas's Temperature in the History
+        int Low = -8;
+        int High = 113;
+        int R = r.nextInt(High-Low) + Low;
+        return R;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel armPositionLabel;
@@ -370,6 +455,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JSlider directionSlider;
     private javax.swing.JPanel externalFeaturesPanel;
     private javax.swing.JRadioButton fastSpeedRadioButton;
+    private javax.swing.JInternalFrame frame;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
@@ -380,6 +466,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup speedButtonGroup;
     private javax.swing.JLabel speedLabel;
     private javax.swing.JLabel stateLabel;
+    private javax.swing.JLabel temperatureLabel;
     private javax.swing.JToggleButton tempratureButton;
     private javax.swing.JLabel tempratureSensorLabel;
     // End of variables declaration//GEN-END:variables

@@ -35,10 +35,6 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="robotMovementPanel" max="32767" attributes="0"/>
@@ -46,8 +42,20 @@
                           <Component id="externalFeaturesPanel" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="454" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                      <Component id="frame" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="temperatureLabel" min="-2" pref="312" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="96" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -58,12 +66,22 @@
               <Component id="jLabel1" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="robotMovementPanel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-              <Component id="clawPositionLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-              <Component id="externalFeaturesPanel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
+                      <Component id="temperatureLabel" min="-2" pref="27" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="frame" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+                      <Component id="clawPositionLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="externalFeaturesPanel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -260,12 +278,12 @@
                       <Component id="armPositionSlider" max="32767" attributes="0"/>
                       <Component id="armPositionLabel" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="31" max="32767" attributes="0"/>
+                  <EmptySpace pref="59" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="clawButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -333,14 +351,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="tempratureSensorLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
-                      </Group>
-                      <Component id="tempratureButton" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="tempratureSensorLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="tempratureButton" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" pref="60" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="cameraStatusLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cameraButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -370,7 +385,7 @@
         <Component class="javax.swing.JToggleButton" name="tempratureButton">
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JToggleButton()"/>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="tempratureButton.setText(&quot;TURN ON&quot;);&#xa;tempratureButton.addChangeListener(new ChangeListener() {&#xa;        @Override&#xa;        public void stateChanged(ChangeEvent event) {&#xa;            if (tempratureButton.isSelected()){&#xa;                tempratureButton.setText(&quot;TURN OFF&quot;);&#xa;            } else {&#xa;                tempratureButton.setText(&quot;TURN ON&quot;);&#xa;            }&#xa;        }&#xa;    });"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="tempratureButton.setText(&quot;TURN ON&quot;);&#xa;tempratureButton.addActionListener(new ActionListener() {&#xa;        @Override&#xa;        public void actionPerformed(ActionEvent event) {&#xa;            if (tempratureButton.isSelected()){&#xa;                tempratureButton.setText(&quot;TURN OFF&quot;);&#xa;                int t = showTemp();&#xa;                temperatureLabel.setText(&quot;The temperature reported by robot is: &quot;+t);&#xa;            } else {&#xa;                tempratureButton.setText(&quot;TURN ON&quot;);&#xa;                temperatureLabel.setText(&quot;The temperature sensor is off&quot;);&#xa;            }&#xa;        }&#xa;    });"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JToggleButton" name="cameraButton">
@@ -381,10 +396,33 @@
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JToggleButton()"/>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="cameraButton.addChangeListener(new ChangeListener() {&#xa;        @Override&#xa;        public void stateChanged(ChangeEvent event) {&#xa;            if (cameraButton.isSelected()){&#xa;                cameraButton.setText(&quot;TURN OFF&quot;);&#xa;            } else {&#xa;                cameraButton.setText(&quot;TURN ON&quot;);&#xa;            }&#xa;        }&#xa;    });"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="cameraButton.addActionListener(new ActionListener() {&#xa;        @Override&#xa;    public void actionPerformed(ActionEvent event) {&#xa;        if (cameraButton.isSelected()){&#xa;                    cameraButton.setText(&quot;TURN OFF&quot;);&#xa;                    loadImage();&#xa;                }&#xa;        else {&#xa;                    cameraButton.setText(&quot;TURN ON&quot;);&#xa;                    removeImage();&#xa;        }&#xa;    }&#xa;});"/>
           </AuxValues>
         </Component>
       </SubComponents>
+    </Container>
+    <Component class="javax.swing.JLabel" name="temperatureLabel">
+    </Component>
+    <Container class="javax.swing.JInternalFrame" name="frame">
+      <Properties>
+        <Property name="visible" type="boolean" value="true"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JInternalFrame(&quot;Camera Capture&quot;)"/>
+      </AuxValues>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="222" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
     </Container>
   </SubComponents>
 </Form>
